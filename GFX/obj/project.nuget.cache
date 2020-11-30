@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fn6xHmQ9ELLBSDGxh5o7Tqq5xMhdkeI8xh7EbYQP5gMXJZfKq5dTBHqmC4WXyah1dEZYMCCSjXkQKo3sNCTklQ==",
+  "success": true,
+  "projectFilePath": "C:\\Programmering 1\\RayLib\\GFX\\GFX.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\marcus.isaksson2\\.nuget\\packages\\raylib-cs\\3.1.5\\raylib-cs.3.1.5.nupkg.sha512",
+    "C:\\Users\\marcus.isaksson2\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
