@@ -18,3 +18,23 @@ C:\Programmering 1\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.csproj.CopyComplete
 C:\Programmering 1\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.dll
 C:\Programmering 1\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.pdb
 C:\Programmering 1\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.genruntimeconfig.cache
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.csprojAssemblyReference.cache
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.AssemblyInfoInputs.cache
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.AssemblyInfo.cs
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.csproj.CoreCompileInputs.cache
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.dll
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.pdb
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.exe
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.deps.json
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.runtimeconfig.json
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.runtimeconfig.dev.json
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.dll
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\GFX.pdb
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\Raylib-cs.dll
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libraylib.so
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libraylib.so
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libraylib.dylib
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\raylib.dll
+D:\Programmering\RayLib\GFX\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\raylib.dll
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.csproj.CopyComplete
+D:\Programmering\RayLib\GFX\obj\Debug\netcoreapp3.1\GFX.genruntimeconfig.cache

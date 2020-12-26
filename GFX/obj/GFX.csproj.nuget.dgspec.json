@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programmering 1\\RayLib\\GFX\\GFX.csproj": {}
+    "D:\\Programmering\\RayLib\\GFX\\GFX.csproj": {}
   },
   "projects": {
-    "C:\\Programmering 1\\RayLib\\GFX\\GFX.csproj": {
+    "D:\\Programmering\\RayLib\\GFX\\GFX.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programmering 1\\RayLib\\GFX\\GFX.csproj",
+        "projectUniqueName": "D:\\Programmering\\RayLib\\GFX\\GFX.csproj",
         "projectName": "GFX",
-        "projectPath": "C:\\Programmering 1\\RayLib\\GFX\\GFX.csproj",
-        "packagesPath": "C:\\Users\\marcus.isaksson2\\.nuget\\packages\\",
-        "outputPath": "C:\\Programmering 1\\RayLib\\GFX\\obj\\",
+        "projectPath": "D:\\Programmering\\RayLib\\GFX\\GFX.csproj",
+        "packagesPath": "C:\\Users\\Marcus PC\\.nuget\\packages\\",
+        "outputPath": "D:\\Programmering\\RayLib\\GFX\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\marcus.isaksson2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Marcus PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
