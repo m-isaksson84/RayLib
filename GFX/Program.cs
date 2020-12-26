@@ -26,6 +26,13 @@ namespace GFX
                 float yMovement = 0;
 
                 if (gameStarted == false) {
+
+                    // resettar spelarens potition (gör till en metod som resettar allt)
+                    posX = 10;
+                    posY = 10;
+                    Speed = 0.3f;
+
+
                     mousePos = Raylib.GetMousePosition();
                     Rectangle startGame = new Rectangle(620, 400, 620, 90);
                     bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, startGame); 
@@ -35,11 +42,10 @@ namespace GFX
                     Raylib.DrawText("Spel!", 800, 200, 100, Color.ORANGE);
                     Raylib.DrawText("Starta Spelet", 620, 400, 90, Color.ORANGE);
 
-                    Raylib.EndDrawing();  
-
                     if (areOverlapping == true)
                     {
-                    
+                        Raylib.DrawText("Starta Spelet", 620, 400, 90, Color.YELLOW);
+
                         if (leftMousePressed == true)
                         {
                             gameStarted = true;
@@ -50,6 +56,7 @@ namespace GFX
                     {
                         gameStarted = true;
                     }
+                    Raylib.EndDrawing();  
                 }
 
                 if (gameStarted == true) {
@@ -72,6 +79,11 @@ namespace GFX
                     if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && posX > 0)
                     {
                         xMovement = -Speed;
+                    }
+
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_B))
+                    {
+                        gameStarted = false;
                     }
 
                     posX += xMovement;
