@@ -11,15 +11,19 @@ namespace GFX
             
             Raylib.InitWindow(2000 , 1200 , "bildtest");
             Texture2D SD = Raylib.LoadTexture("character.png");
+            Vector2 mousePos = Raylib.GetMousePosition();
             float posX = 10;
             float posY = 10;
+            // position x-previous resp y-previous
+            float posXP = posX;
+            float posYP = posY;
             float xSpeed = 0.3f;
             float ySpeed = 0.3f;
             float xSpeedN = 0.3f;
             float ySpeedN = 0.3f;
             bool gameStarted;
+            
             gameStarted = false;
-            Vector2 mousePos = Raylib.GetMousePosition();
         
             while (!Raylib.WindowShouldClose())
             {
@@ -42,23 +46,36 @@ namespace GFX
 
 
                     mousePos = Raylib.GetMousePosition();
-                    Rectangle startGame = new Rectangle(620, 400, 620, 90);
-                    bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, startGame); 
+                    Rectangle startGame = new Rectangle(840, 400, 260, 90);
+                    Rectangle options = new Rectangle(800, 600, 330, 90);
+                    bool areOverlappingStart = Raylib.CheckCollisionPointRec(mousePos, startGame);
+                    bool areOverlappingOptions = Raylib.CheckCollisionPointRec(mousePos, options);
                     bool leftMousePressed = Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON);
 
                     Raylib.ClearBackground(Color.RED);     
-                    Raylib.DrawText("Spel!", 800, 200, 100, Color.ORANGE);
-                    Raylib.DrawText("Starta Spelet", 620, 400, 90, Color.ORANGE);
+                    Raylib.DrawText("Game thing! :D", 650, 200, 100, Color.ORANGE);
+                    Raylib.DrawText("Start", 840, 400, 90, Color.ORANGE);
+                    Raylib.DrawText("Options", 800, 600, 90, Color.ORANGE);
 
-                    if (areOverlapping == true)
+                    if (areOverlappingStart == true)
                     {
-                        Raylib.DrawText("Starta Spelet", 620, 400, 90, Color.YELLOW);
+                        Raylib.DrawText("Start", 840, 400, 90, Color.YELLOW);
 
                         if (leftMousePressed == true)
                         {
                             gameStarted = true;
                         }
-                    }   
+                    }
+
+                     if (areOverlappingOptions == true)
+                    {
+                        Raylib.DrawText("Options", 800, 600, 90, Color.YELLOW);
+
+                        if (leftMousePressed == true)
+                        {
+                            
+                        }
+                    }    
 
                     if (Raylib.IsKeyPressed(KeyboardKey.KEY_X))
                     {
@@ -107,12 +124,14 @@ namespace GFX
 
                     // sätter upp kollosioner för karaktären genom att testa ifall vector2 (characterCollisionBox) kolliderar med obstacle, returnerar true om de överlappar (kolliderar)
                     Vector2 characterCollisionBox = new Vector2(posX, posY);
+                    Vector2 characterCollisionBox1 = new Vector2(posX+113, posY+150);
                     Rectangle obstacle = new Rectangle(500, 500, 1000, 400);
-                    bool characterCollide = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle); 
+                    bool characterCollide = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle);
+                    bool characterCollide1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle);
 
-                    if (characterCollide == true)
+                    if (characterCollide || characterCollide1 == true)
                     {
-
+/*
                             if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
                             {
                                 ySpeedN = 0;
@@ -132,6 +151,35 @@ namespace GFX
                             {
                                 xSpeedN = 0;
                             }
+                            */
+
+
+                            /*
+                            if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && Raylib.IsKeyDown(KeyboardKey.KEY_W))
+                            {
+                                posX = posXP;
+                                Raylib.ClearBackground(Color.BEIGE);
+                            }
+                            */
+
+                            /*
+
+                            ----------- SLIDE ------------
+
+                            if (Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_S))
+                            {
+                                posY = posYP;
+                            }
+
+                            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) || Raylib.IsKeyDown(KeyboardKey.KEY_A))
+                            {
+                                posX = posXP;
+                            }
+
+                            */
+                            
+                            posX = posXP;
+                            posY = posYP;
                     }
 
                     else 
@@ -145,12 +193,15 @@ namespace GFX
                     Raylib.DrawRectangle(500, 500, 1000, 400, Color.WHITE);
                     Raylib.DrawTextureEx(SD, new Vector2(posX, posY), 0f, 0.25f, Color.WHITE);
 
-                // bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, SD);
-                    
+                    // logga senaste x och y position
+                    posXP = posX;
+                    posYP = posY;
+
+                    // bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, SD);
                     Raylib.ClearBackground(Color.BEIGE);
                     Raylib.EndDrawing();
                 }
-           }
+            }
         }
     }
 }
