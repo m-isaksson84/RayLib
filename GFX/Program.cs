@@ -25,6 +25,8 @@ namespace GFX
             float xSpeedN = 0.3f;
             float ySpeedN = 0.3f;
             bool gameStarted;
+            bool startLevel1;
+            bool startLevel2;
 
             // Knappar för menyn.
             Rectangle startGame = new Rectangle(840, 400, 260, 90);
@@ -33,9 +35,12 @@ namespace GFX
             // Hitboxes för spelet
             Rectangle obstacle = new Rectangle(400, 300, 1600, 600);
             Rectangle obstacle2 = new Rectangle(0, 0, 100, 1200);
+            Rectangle obstacleLevel2 = new Rectangle(1600, 400, 300, 500);
             Rectangle finishLineLevel1 = new Rectangle(1800, 1000, 100, 200);
             
             gameStarted = false;
+            startLevel1 = false;
+            startLevel2 = false;
         
             while (!Raylib.WindowShouldClose())
             {
@@ -47,7 +52,7 @@ namespace GFX
                 float yMovementN = 0;
 
                 if (gameStarted == false) {
-
+                
                     // resettar spelarens potition (gör till en metod som resettar allt)
                     posX = 1800;
                     posY = 80;
@@ -76,6 +81,7 @@ namespace GFX
                         if (leftMousePressed == true)
                         {
                             gameStarted = true;
+                            startLevel1 = true;
                         }
                     }
 
@@ -97,156 +103,146 @@ namespace GFX
                 }
 
                 if (gameStarted == true) {
+                
 
-                    
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && posY < height - 150)
-                    {
-                        yMovement = ySpeed;
-                    }
+                    if (gameStarted == true) {
+                        
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && posY < height - 150)
+                        {
+                            yMovement = ySpeed;
+                        }
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_W) && posY > 0)
-                    {
-                        yMovementN = -ySpeedN;
-                    }
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_W) && posY > 0)
+                        {
+                            yMovementN = -ySpeedN;
+                        }
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && posX < width - 113)
-                    {
-                        xMovement = xSpeed;
-                    }
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && posX < width - 113)
+                        {
+                            xMovement = xSpeed;
+                        }
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && posX > 0)
-                    {
-                        xMovementN = -xSpeedN;
-                    }
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && posX > 0)
+                        {
+                            xMovementN = -xSpeedN;
+                        }
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_B))
-                    {
-                        gameStarted = false;
-                    }
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_B))
+                        {
+                            gameStarted = false;
+                            startLevel1 = false;
+                            startLevel2 = false;
+                        }
 
-                    posX += xMovement;
-                    posY += yMovement;
+                        posX += xMovement;
+                        posY += yMovement;
 
-                    posX += xMovementN;
-                    posY += yMovementN;
+                        posX += xMovementN;
+                        posY += yMovementN;
 
-                    Raylib.BeginDrawing();
-                    Raylib.SetExitKey(KeyboardKey.KEY_Q);
-
-
-                    // sätter upp kollosioner för karaktären genom att testa ifall vector2 (characterCollisionBox) kolliderar med obstacle, returnerar true om de överlappar (kolliderar)
-
-                    Vector2 characterCollisionBox = new Vector2(posX, posY);
-                    Vector2 characterCollisionBox1 = new Vector2(posX+113, posY+150);
-                    Vector2 characterCollisionBox2 = new Vector2(posX, posY+150); // vektorn går från posX till PosY+150 vilket skapar en diagonal linje
-                    Vector2 characterCollisionBox3 = new Vector2(posX+113, posY); // vektorn går från PosX+113 till posY vilket skapar en diagonal linje
-                    //Vector2 characterCollisionBox4 = new Vector2(posX, posX+113); // vektorn går från posX till PosX+113 vilket skapar en rak linje längst upp
-                    //Vector2 characterCollisionBox4 = new Vector2(posX+113, posY+75); // vektorn går från posX till PosX+113 vilket skapar en rak linje längst upp
+                        Raylib.BeginDrawing();
+                        Raylib.SetExitKey(KeyboardKey.KEY_Q);
 
 
-                    bool characterCollide = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle);
-                    bool characterCollide1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle);
-                    bool characterCollide2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacle);
-                    bool characterCollide3 = Raylib.CheckCollisionPointRec(characterCollisionBox3, obstacle);
+                        // sätter upp kollosioner för karaktären genom att testa ifall vector2 (characterCollisionBox) kolliderar med obstacle, returnerar true om de överlappar (kolliderar)
+                        Vector2 characterCollisionBox = new Vector2(posX, posY);
+                        Vector2 characterCollisionBox1 = new Vector2(posX+113, posY+150);
+                        Vector2 characterCollisionBox2 = new Vector2(posX, posY+150); // vektorn går från posX till PosY+150 vilket skapar en diagonal linje
+                        Vector2 characterCollisionBox3 = new Vector2(posX+113, posY); // vektorn går från PosX+113 till posY vilket skapar en diagonal linje
 
-                    bool test = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle2);
-                    bool test1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle2);
-                    bool test2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacle2);
-                    bool test3 = Raylib.CheckCollisionPointRec(characterCollisionBox3, obstacle2);
-      
-                    bool finishLevel = Raylib.CheckCollisionPointRec(characterCollisionBox, finishLineLevel1);
-                    bool finishLevel1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, finishLineLevel1);
+                        if (startLevel1 == true) 
+                        {
 
+                            bool characterCollide = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle);
+                            bool characterCollide1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle);
+                            bool characterCollide2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacle);
+                            bool characterCollide3 = Raylib.CheckCollisionPointRec(characterCollisionBox3, obstacle);
 
-                    if (test || test1 || test2 || test3 == true)
-                    {
-                        posX = posXP;
-                        posY = posYP;
-                    }
+                            bool test = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle2);
+                            bool test1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle2);
+                            bool test2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacle2);
+                            bool test3 = Raylib.CheckCollisionPointRec(characterCollisionBox3, obstacle2);
 
-                    if (characterCollide || characterCollide1 || characterCollide2 || characterCollide3 == true)
-                    {
-/*
-                            if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
-                            {
-                                ySpeedN = 0;
-                            }
+                            bool finishLevel = Raylib.CheckCollisionPointRec(characterCollisionBox, finishLineLevel1);
+                            bool finishLevel1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, finishLineLevel1);
 
-                            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
-                            {
-                                xSpeed = 0;
-                            }
-
-                            else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
-                            {
-                                ySpeed = 0;
-                            } 
-
-                            else if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
-                            {
-                                xSpeedN = 0;
-                            }
-                            */
-
-
-                            /*
-                            if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && Raylib.IsKeyDown(KeyboardKey.KEY_W))
+                            if (test || test1 || test2 || test3 == true)
                             {
                                 posX = posXP;
-                                Raylib.ClearBackground(Color.BEIGE);
-                            }
-                            */
-
-                            /*
-
-                            ----------- SLIDE ------------
-
-                            if (Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_S))
-                            {
                                 posY = posYP;
                             }
 
-                            else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) || Raylib.IsKeyDown(KeyboardKey.KEY_A))
-                            {
+                            if (characterCollide || characterCollide1 || characterCollide2 || characterCollide3 == true)
+                            {            
                                 posX = posXP;
+                                posY = posYP;
                             }
 
-                            */
-                            
-                        posX = posXP;
-                        posY = posYP;
+                            else 
+                            {
+                                xSpeed = 0.3f;
+                                ySpeed = 0.3f;
+                                xSpeedN = 0.3f;
+                                ySpeedN = 0.3f;
+                            }
+
+                            if (finishLevel || finishLevel1 == true)
+                            {
+                                startLevel1 = false;
+                                startLevel2 = true;
+                                posX = 1800;
+                                posY = 80;
+                                xSpeed = 0.3f;
+                                ySpeed = 0.3f;
+                                xSpeedN = 0.3f;
+                                ySpeedN = 0.3f;
+                            }
+
+                            Raylib.DrawRectangle(400, 300, 1600, 600, Color.WHITE);
+                            Raylib.DrawRectangle(0, 0, 100, 1200, Color.WHITE);
+                            Raylib.DrawText("Use WASD to move and navigate to the red square :D", 680, 500, 40, Color.BLACK);
+                            Raylib.DrawRectangle(1800, 1000, 100, 100, Color.RED);
+                            Raylib.DrawRectangle(1800, 80, 10, 10, Color.RED);
+                            Raylib.DrawTextureEx(SD, new Vector2(posX, posY), 0f, 0.25f, Color.WHITE);
+                        }
+
+
+                        if (startLevel2 == true) 
+                        {
+                            bool characterCollideLVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacleLevel2);
+                            bool characterCollide1LVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacleLevel2);
+                            bool characterCollide2LVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacleLevel2);
+                            bool characterCollide3LVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox3, obstacleLevel2);
+
+                            if (characterCollideLVL2 || characterCollide1LVL2 || characterCollide2LVL2 || characterCollide3LVL2 == true)
+                            {            
+                                posX = posXP;
+                                posY = posYP;
+                            }
+
+
+                            Raylib.ClearBackground(Color.RED);
+                            Raylib.DrawRectangle(1600, 400, 300, 500, Color.WHITE);
+
+            
+                            Raylib.DrawRectangle(1800, 1000, 100, 100, Color.RED);
+
+                            Raylib.DrawRectangle(1800, 80, 10, 10, Color.RED);
+                            Raylib.DrawTextureEx(SD, new Vector2(posX, posY), 0f, 0.25f, Color.WHITE);
+                        }
+
+
+
+                        // logga senaste x och y position
+                        posXP = posX;
+                        posYP = posY;
+
+                        // bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, SD);
+                        Raylib.ClearBackground(Color.BROWN);
+                        Raylib.DrawText("B - Back to menu", 5, 5, 20, Color.BLACK);
+                        Raylib.DrawText("Q - Quit game", 5, 25, 20, Color.BLACK);
+                        Raylib.EndDrawing();
                     }
-
-                    else if (finishLevel || finishLevel1 == true)
-                    {
-                        posX = posXP;
-                        posY = posYP;
-                        gameStarted = false;
-                    }
-
-                    else 
-                    {
-                        xSpeed = 0.3f;
-                        ySpeed = 0.3f;
-                        xSpeedN = 0.3f;
-                        ySpeedN = 0.3f;
-                    }
-
-                    Raylib.DrawRectangle(400, 300, 1600, 600, Color.WHITE);
-                    Raylib.DrawRectangle(0, 0, 100, 1200, Color.WHITE);
-                    Raylib.DrawText("Use WASD to move and navigate to the red square :D", 680, 500, 40, Color.BLACK);
-                    Raylib.DrawRectangle(1800, 1000, 100, 100, Color.RED);
-
-                    Raylib.DrawRectangle(1800, 80, 10, 10, Color.RED);
-                    Raylib.DrawTextureEx(SD, new Vector2(posX, posY), 0f, 0.25f, Color.WHITE);
-
-                    // logga senaste x och y position
-                    posXP = posX;
-                    posYP = posY;
-
-                    // bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, SD);
-                    Raylib.ClearBackground(Color.BEIGE);
-                    Raylib.EndDrawing();
                 }
             }
         }
