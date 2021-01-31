@@ -37,11 +37,12 @@ namespace GFX
             Rectangle startGame = new Rectangle(840, 400, 260, 90);
             Rectangle options = new Rectangle(800, 600, 330, 90);
 
-            // Hitboxes för spelet
+            // Hitboxes för level 1
             Rectangle obstacle = new Rectangle(400, 300, 1600, 600);
-            //Rectangle obstacle2 = new Rectangle(0, 0, 100, 1200);
+            // Rectangle obstacle2 = new Rectangle(0, 0, 100, 1200);
             Rectangle finishLineLevel1 = new Rectangle(1800, 1000, 100, 200);
 
+            // Hitboxes för level 2
             Rectangle obstacleLevel2 = new Rectangle(400, 250, 1800, 150);
             Rectangle obstacle2Level2 = new Rectangle(0, 250, 200, 150);
 
@@ -78,7 +79,6 @@ namespace GFX
                     startLevel1 = false;
                     startLevel2 = false;
                 
-                    // resettar spelarens potition (gör till en metod som resettar allt)
                     posX = 1800;
                     posY = 80;
                     xSpeed = 0.3f;
@@ -89,7 +89,7 @@ namespace GFX
 
                     mousePos = Raylib.GetMousePosition();
 
-                
+                    // här testar programmet ifall musen och startmenyknapparna överlappar
                     bool areOverlappingStart = Raylib.CheckCollisionPointRec(mousePos, startGame);
                     bool areOverlappingOptions = Raylib.CheckCollisionPointRec(mousePos, options);
                     bool leftMousePressed = Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON);
@@ -132,6 +132,7 @@ namespace GFX
 
                     if (gameStarted == true) {
                         
+                        // här sätts spelarens rörelsekontroller upp
                         if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && posY < height - 150)
                         {
                             yMovement = ySpeed;
@@ -180,7 +181,8 @@ namespace GFX
 
                         if (startLevel1 == true) 
                         {
-
+                            
+                            // sätter upp kollisioner för spelaren
                             bool characterCollide = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacle);
                             bool characterCollide1 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacle);
                             bool characterCollide2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacle);
@@ -240,6 +242,7 @@ namespace GFX
 
                             Rectangle gun1 = new Rectangle(1040, gun1posY, 115, 20);
 
+                            // sätter upp kollisioner för spelaren
                             bool characterCollideLVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox, obstacleLevel2);
                             bool characterCollide1LVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox1, obstacleLevel2);
                             bool characterCollide2LVL2 = Raylib.CheckCollisionPointRec(characterCollisionBox2, obstacleLevel2);
@@ -321,6 +324,7 @@ namespace GFX
                                 gameStarted = false;
                             }
 
+                            // resettar till startmenyn
                             if (finishLevel3 || finishLevel4 == true)
                             {
                                 gameStarted = false;
