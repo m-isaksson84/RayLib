@@ -136,11 +136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programmering\\RayLib\\GFX\\GFX.csproj",
+      "projectUniqueName": "D:\\Programmering\\tetsprov - arrayer\\GFX\\GFX.csproj",
       "projectName": "GFX",
-      "projectPath": "D:\\Programmering\\RayLib\\GFX\\GFX.csproj",
+      "projectPath": "D:\\Programmering\\tetsprov - arrayer\\GFX\\GFX.csproj",
       "packagesPath": "C:\\Users\\Marcus PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Programmering\\RayLib\\GFX\\obj\\",
+      "outputPath": "D:\\Programmering\\tetsprov - arrayer\\GFX\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Marcus PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
